@@ -1,13 +1,9 @@
-// Refer Booking Appointment app for understanding
-// I added dynamic category and price feature - a extra feature in this project which is not available in the booking appointment app
-// Iss feature me product ki jo bhi category hogi product us category ke title ke niche show hoga 
-// and category aur price apne aap update honge product ke add, delete or update hone pe
 
 let url =
   "https://crudcrud.com/api/74a2bcd5c340485db9a3451d3fe9209b/productsData";
 let responseData = [];
 
-let categoryObj = { // this will keep track of category divs
+let categoryObj = {
   "Clothing and Apparel": 0,
   "Electronics": 0,
   "Home and Kitchen": 0,
@@ -46,9 +42,8 @@ async function refresh() {
   try {
     let response = await axios.get(url);
     for (let i = 0; i < response.data.length; i++) {
-      // console.log(response.data[i]);
       updateResponseData("getORpost", response.data[i]);
-      updateCategoryAndTotalPrice("getORpost", response.data[i]); // update category and total price
+      updateCategoryAndTotalPrice("getORpost", response.data[i]);
       displayProductOnScreen(response.data[i]);
     }
   }
@@ -79,7 +74,7 @@ async function addDetailsCard(event) {
   try {
     let response = await axios.post(url, productDetailsObj);
     updateResponseData("getORpost", response.data);
-    updateCategoryAndTotalPrice("getORpost", productDetailsObj); // update category and total price
+    updateCategoryAndTotalPrice("getORpost", productDetailsObj);
     displayProductOnScreen(response.data);
   }
   catch (error) {
@@ -94,7 +89,7 @@ async function deleteDetailsCard(event) {
   try {
     let response = await axios.delete(`${url}/${targetObj._id}`);
     updateResponseData("delete", targetObj);
-    updateCategoryAndTotalPrice("delete", targetObj); // updated category and total price
+    updateCategoryAndTotalPrice("delete", targetObj);
     event.target.parentNode.parentNode.remove();
   }
   catch (error) {
@@ -174,10 +169,6 @@ async function addEditedCard(event) {
     uniqueKey: targetObj.uniqueKey,
   };
 
-  // Jb bhi mai tragetObj ko sidhe hi pass kr rha tha to usme wo keys ki values h wo change ho jaa rhi thi aur new values editedProductObj ki hoti thi
-  // to maybe yhape tagetObj aur editedProductObj same location ko point kr rhe h isiliye jb mai editedProductObj me values update kr rha hu to targetObj me bhi values update ho rhi h
-  // Isiliye maine targetObj ko sidha na bhejke uski copy create krli jisse ki hmare pass old values aa gyi aur fir us object ko pass kr diya
-  // ab agr targetObj change bhi ho jaata h to bhi hmare pass old values rhegi
   let argObj = [Object.assign({}, targetObj), editedProductObj];
   console.log(argObj);
 
@@ -186,7 +177,7 @@ async function addEditedCard(event) {
   try {
     let response = await axios.put(`${url}/${targetObj._id}`, editedProductObj);
     updateResponseData("put", editedProductObj);
-    updateCategoryAndTotalPrice("put", argObj); // updated category and total price
+    updateCategoryAndTotalPrice("put", argObj);
 
       document.getElementById(`${targetObj.uniqueKey}`).innerHTML =
       `<div>
@@ -247,21 +238,17 @@ function getTargetObj(element) {
 function updateCategoryAndTotalPrice(requestType, paramObj) {
 
   if (requestType == "getORpost") {
-    // category update
     categoryObj[paramObj.productCategory]++;
     let targetCategory = document.querySelector(`[title="${paramObj.productCategory}"]`);
     targetCategory.classList.contains("d-none") ? targetCategory.classList.remove("d-none") : "";
-    // price update
     totalPrice += Number(paramObj.productPrice);
   }
   else if (requestType == "delete") {
-    // category update
     categoryObj[paramObj.productCategory]--;
     categoryObj[paramObj.productCategory] == 0 ? document.querySelector(`[title="${paramObj.productCategory}"]`).classList.add("d-none") : "";
-    // price update
     totalPrice -= Number(paramObj.productPrice);
   }
-  else if (requestType == "put") { // category changed then update category
+  else if (requestType == "put") {
 
     if (paramObj[0].productCategory != paramObj[1].productCategory) {
       categoryObj[paramObj[0].productCategory]--;
@@ -280,24 +267,11 @@ function updateCategoryAndTotalPrice(requestType, paramObj) {
       newCategoryDiv.appendChild(cardDiv);
     }
 
-    if (paramObj[0].productPrice != paramObj[1].productPrice) {  // if price changed then update price
+    if (paramObj[0].productPrice != paramObj[1].productPrice) {
       totalPrice -= Number(paramObj[0].productPrice);
       totalPrice += Number(paramObj[1].productPrice);
     }
   }
-  // in each case we will update total price
-  // kyunki sirf put -- if category change wale case me hume price change krne ki jrurat nhi h baaki sbme h(kyunki usme price change nhi hua h)
-  // to agr hum iss line ko bahar likhte h to sirf us case me extra kaam hoga jisse itna frk nhi pdta isiliye humne sb case me price update kr diya
-  // agr hum isko bahar na likhte to fir hume isko getORpost, delete and put -- if price change 3 jgah likhna pdta
   document.querySelector(".total").textContent = `Total Price : ${totalPrice} Rs.`;
 }
 
-/*
-I had two options :
-update category in one function and update total price in another function
-OR
-update both in one function
-
-So, I am going with second option. Why?
-Because both have similarity in syntax so i don't want to write same syntax twice
-*/
