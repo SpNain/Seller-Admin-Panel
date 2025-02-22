@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Admin Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <!-- Heading -->
+    <section class=" ">
+        <div class="transparent-container container-fluid p-4 text-info text-center mb-5 mt-4 w-75 rounded-5">
+            <h1 class="">Seller Admin Panel</h1>
+        </div>
+    </section>
+
+    <!-- Form Creation -->
+    <section class="w-50 mx-auto text-white">
+        <div class="transparent-container container-fluid p-2 rounded-top-5">
+            <h3 class="text-center"> Add A Product </h3>
+        </div>
+        <div class="transparent-container container-fluid d-md-block text-center p-2 rounded-bottom-5">
+            <form action="#" class="w-75 mx-auto" id="productForm">
+                <!-- Product Name -->
+                <div class="col mb-3">
+                    <label for="name" class="col-form-label">Product Name</label>
+                    <input type="text" class="form-control" name="name" id="name">
+                </div>
+                
+                <!-- Price -->
+                <div class="col mb-3">
+                    <label for="price" class="col-form-label">Price</label>
+                    <input type="number" class="form-control" name="price" id="price" >
+                </div>
+
+                <!-- Choose Category -->
+                <div class="col mb-3">
+                    <label for="category" class="col-form-label">Choose Category</label>
+                    <select name="category" id="category" class="form-select form-control" required>
+                        <option value="Clothing and Apparel">Clothing and Apparel</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Home and Kitchen">Home and Kitchen</option>
+                        <option value="Beauty and Personal Care">Beauty and Personal Care</option>
+                        <option value="Books and Literature">Books and Literature</option>
+                        <option value="Health and Wellness">Health and Wellness</option>
+                        <option value="Sports and Outdoors">Sports and Outdoors</option>
+                        <option value="Toys and Games">Toys and Games</option>
+                        <option value="Automotive and Tools">Automotive and Tools</option>
+                        <option value="Jewelry and Accessories">Jewelry and Accessories</option>
+                        <option value="Furniture and Home Decor">Furniture and Home Decor</option>
+                        <option value="Food and Groceries">Food and Groceries</option>
+                        <option value="Pet Supplies">Pet Supplies</option>
+                        <option value="Baby and Kids">Baby and Kids</option>
+                        <option value="Music and Movies">Music and Movies</option>
+                        <option value="Office Supplies">Office Supplies</option>
+                        <option value="Fitness and Exercise">Fitness and Exercise</option>
+                        <option value="Arts and Crafts">Arts and Crafts</option>
+                        <option value="Travel and Luggage">Travel and Luggage</option>
+                        <option value="Shoes and Footwear">Shoes and Footwear</option>
+                    </select>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="col mt-4 mb-2">
+                    <div class="col-12 d-flex justify-content-center">
+                        <input type="submit" class="form-control button d-flex justify-content-center" id="submit" value="Add">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </section>
+
+    <!-- Detail Objects Sections -->
+    <section class="w-75 mx-auto">
+
+        <div class=" w-75 transparent-container container-fluid p-2 mt-5 rounded-5 text-warning">
+            <h3 class="text-center"> All Products </h3>
+        </div>
+
+        <div class="container-fluid mt-5 detailsObjectsDiv d-flex justify-content-centre flex-wrap align-items-start">
+            <!-- Objects Cards will be added in between following divs -->
+            <div class="w-100 d-none d-flex justify-content-start flex-wrap align-items-start" title="Clothing and Apparel">
+                <h3>⭐ Clothing and Apparel</h3>
+            </div>
+            <div class="w-100 d-none d-flex justify-content-start flex-wrap align-items-start" title="Electronics">
+                <h3>⭐ Electronics</h3>
+            </div>
+            <div class="w-100 d-none d-flex justify-content-start flex-wrap align-items-start" title="Home and Kitchen">
+                <h3>⭐ Home and Kitchen</h3>
+            </div>
+            <div class="w-100 d-none d-flex justify-content-start flex-wrap align-items-start" title="Beauty and Personal Care">
+                <h3>⭐ Beauty and Personal Care</h3>
+            </div>
+            <div class="w-100 d-none d-flex justify-content-start flex-wrap align-items-start" title="Books and Literature">
+                <h3>⭐ Books and Literature</h3>
+            </div>
+            <div class="w-100 d-none d-flex justify-content-start flex-wrap align-items-start" title="Health and Wellness">
+                <h3>⭐ Health and Wellness</h3>
+            </div>
+            <div class="w-100 d-none d-flex justify-content-start flex-wrap align-items-start" title="Sports and Outdoors">
+                <h3>⭐ Sports and Outdoors</h3>
+            </div>
+            <div class="w-100 d-none d-flex justify-content-start flex-wrap align-items-start" title="Toys and Games">
+                <h3>⭐ Toys and Games</h3>
+            </div>
+            <div class="w-100 d-none d-flex justify-content-start flex-wrap align-items-start" title="Automotive and Tools">
+                <h3>⭐ Automotive and Tools</h3>
+            </div>
+            <div class="w-100 d-none d-flex justify-content-start flex-wrap align-items-start" title="Jewelry and Accessories">
+                <h3>⭐ Jewelry and Accessories</h3>
+            </div>
+            <div class="w-100 d-none d-flex justify-content-start flex-wrap align-items-start" title="Furniture and Home Decor">
+                <h3>⭐ Furniture and Home Decor</h3>
+            </div>
+            <div class="w-100 d-none d-flex justify-content-start flex-wrap align-items-start" title="Food and Groceries">
+                <h3>⭐ Food and Groceries</h3>
+            </div>
+            <div class="w-100 d-none d-flex justify-content-start flex-wrap align-items-start" title="Pet Supplies">
+                <h3>⭐ Pet Supplies</h3>
+            </div>
+            <div class="w-100 d-none d-flex justify-content-start flex-wrap align-items-start" title="Baby and Kids">
+                <h3>⭐ Baby and Kids</h3>
+            </div>
+            <div class="w-100 d-none d-flex justify-content-start flex-wrap align-items-start" title="Music and Movies">
+                <h3>⭐ Music and Movies</h3>
+            </div>
+            <div class="w-100 d-none d-flex justify-content-start flex-wrap align-items-start" title="Office Supplies">
+                <h3>⭐ Office Supplies</h3>
+            </div>
+            <div class="w-100 d-none d-flex justify-content-start flex-wrap align-items-start" title="Fitness and Exercise">
+                <h3>⭐ Fitness and Exercise</h3>
+            </div>
+            <div class="w-100 d-none d-flex justify-content-start flex-wrap align-items-start" title="Arts and Crafts">
+                <h3>⭐ Arts and Crafts</h3>
+            </div>
+            <div class="w-100 d-none d-flex justify-content-start flex-wrap align-items-start" title="Travel and Luggage">
+                <h3>⭐ Travel and Luggage</h3>
+            </div>
+            <div class="w-100 d-none d-flex justify-content-start flex-wrap align-items-start" title="Shoes and Footwear">
+                <h3>⭐ Shoes and Footwear</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Total price section -->
+    <section class="w-75 mx-auto">
+        <div class=" w-50 transparent-container container-fluid p-1 mt-5 rounded-2 text-success">
+            <h3 class="text-center total"> Total Price : 0 Rs.</h3>
+        </div>
+    </section>
+
+</body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js"></script>
+    <script src="script.js"></script>
+
+</html>
+
